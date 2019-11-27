@@ -8,6 +8,7 @@ APP_NAME = os.environ.get('OPENSHIFT_APP_NAME', 'flask')
 IP = os.environ.get('OPENSHIFT_PYTHON_IP', '127.0.0.1')
 PORT = int(os.environ.get('OPENSHIFT_PYTHON_PORT', 8080))
 HOME_DIR = os.environ.get('OPENSHIFT_HOMEDIR', os.getcwd())
+ENV_NAME = os.environ.get('ENV_NAME', 'test')
 
 log = logging.getLogger(__name__)
 app = Flask(__name__)
@@ -15,6 +16,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return jsonify({
+        'env_name': ENV_NAME,
         'host_name': HOST_NAME,
         'app_name': APP_NAME,
         'ip': IP,
