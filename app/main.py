@@ -25,5 +25,13 @@ def hello():
         'host': socket.gethostname()
     })
 
+@app.route('test')
+def iot():
+    return jsonify({
+        'vibration': '0.2',
+        'temperature': '84.2'
+    })
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT)
